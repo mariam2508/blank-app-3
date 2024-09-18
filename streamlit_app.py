@@ -1,5 +1,5 @@
 import streamlit as st
-
+import plotly.express as px
 import pandas as pd
 st.header(' file upload app')
 file=st.file_uploader('upload file',type=['csv'])

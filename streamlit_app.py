@@ -9,7 +9,6 @@ if file is not None:
   st.write(df)
 num_row=st.slider('choose num rows',min_value=1,max_value=len(df))
 names_columns=st.multiselect('choose names of  columns',df.columns.tolist())
-st.write(df[:num_row][names_columns])
 if names_columns:
   st.write(df[:num_row][names_columns])
 else:

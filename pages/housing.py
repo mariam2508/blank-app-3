@@ -13,19 +13,30 @@ if file is not None:
   else:
     st.write(df[:num_row])
 
-num_col=df.select_dtypes(include='number').columns.tolist()
-col1,col2,col3=st.columns(3)
-tab1,tab2=st.tabs(['scatter plot','histogram'])
-with tab1:
-  with col1:
-    x_col=st.selectbox('choose x',num_col)
-  with col2:
-    y_col=st.selectbox('choose y',num_col)
-  with col3:
-    color=st.selectbox('choose color',num_col)
+import streamlit as st
+import plotly.express as px
 
-    fig=px.scatter(df,x=x_col,y=y_col,color=color)
+num_col = df.select_dtypes(include='number').columns.tolist()
+
+tab1, tab2 = st.tabs(['Scatter Plot', 'Histogram'])
+
+with tab1:
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        x_col = st.selectbox('Choose x-axis', num_col, key='scatter_x')
+    with col2:
+        y_col = st.selectbox('Choose y-axis', num_col, key='scatter_y')
+    with col3:
+        color = st.selectbox('Choose color', num_col, key='scatter_color')
+
+    # Create scatter plot
+    fig = px.scatter(df, x=x_col, y=y_col, color=color)
     st.plotly_chart(fig)
+
 with tab2:
-  fig2=px.histogram(df,x=x_col)
-  st.plotly_chart(fig2)
+    # Allow user to choose a column for the histogram x-axis
+    hist_x_col = st.selectbox('Choose x-axis for histogram', num_col, key='hist_x')
+
+    # Create histogram
+    fig2 = px.histogram(df, x=hist_x_col)
+    st.plotly_chart(fig2)

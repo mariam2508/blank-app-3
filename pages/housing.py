@@ -1,5 +1,6 @@
 import pandas as pd
-st.header(' file upload app')
+import streamlit as st
+st.header('file upload app')
 file=st.file_uploader('upload file',type=['csv'])
 
 if file is not None:

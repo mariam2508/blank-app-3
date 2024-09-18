@@ -1,6 +1,5 @@
 import streamlit as st
-
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+name=st.text_input('ENTER NAME')
+btn=st.button('show')
+if btn:
+  st.write(f'Hello {name}')

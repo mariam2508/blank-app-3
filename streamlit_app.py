@@ -18,11 +18,11 @@ if file is not None:
 num_col=df.select_dtypes(include='number').columns.tolist()
 col1,col2,col3=st.columns(3)
 with col1:
-x_col=st.selectbox('choose x',num_col)
+  x_col=st.selectbox('choose x',num_col)
 with col2:
-y_col=st.selectbox('choose y',num_col)
+  y_col=st.selectbox('choose y',num_col)
 with col3:
-color=st.selectbox('choose color',num_col)
+  color=st.selectbox('choose color',num_col)
 
 fig=px.scatter(df,x=x_col,y=y_col,color=color)
 st.plotly_chart(fig)

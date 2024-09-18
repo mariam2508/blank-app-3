@@ -15,7 +15,8 @@ if file is not None:
     st.write(df[:num_row])
 
 
-x_col=st.selectbox('choose x',df.columns.tolist())
-y_col=st.selectbox('choose y',df.columns.tolist())
+num_col=df.select_dtypes(include='number').columns.tolist()
+x_col=st.selectbox('choose x',num_col)
+y_col=st.selectbox('choose y',num_col)
 fig=px.scatter(df,x=x_col,y=y_col)
 st.plotly_chart(fig)
